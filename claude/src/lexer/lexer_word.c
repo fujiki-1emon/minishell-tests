@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_word.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claude <claude@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stanizak <stanizak@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 00:00:00 by claude            #+#    #+#             */
-/*   Updated: 2026/01/01 00:00:00 by claude           ###   ########.fr       */
+/*   Updated: 2026/03/01 20:56:23 by stanizak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,5 @@ int	lex_word_end(const char *line, int *i)
 	}
 	return ((unsigned char)q);
 }
+/*
+先読みしないことが軸解析では大事*/

@@ -55,6 +55,7 @@ static int	is_space(char c)
 		return (1);
 	return (0);
 }
+
 static 
 int	lex_line(const char *line, t_token **out)
 {
@@ -67,6 +68,6 @@ int	lex_line(const char *line, t_token **out)
 	{
 		if (is_space(line[i]))
 			++i;
-
+		lex_op()
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: claude <claude@student.42.fr>              +#+  +:+       +#+        */
+/*   By: stanizak <stanizak@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 00:00:00 by claude            #+#    #+#             */
-/*   Updated: 2026/01/01 00:00:00 by claude           ###   ########.fr       */
+/*   Updated: 2026/03/01 21:17:19 by stanizak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,4 @@ int	lex_line(t_shell *sh, const char *line, t_token **out)
 		}
 	}
 	return (0);
-}
+unsigned}

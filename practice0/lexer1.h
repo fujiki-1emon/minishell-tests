@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.h                                            :+:      :+:    :+:   */
+/*   lexer1.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stanizak <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/01 19:33:08 by stanizak          #+#    #+#             */
-/*   Updated: 2026/03/01 19:33:22 by stanizak         ###   ########.fr       */
+/*   Created: 2026/03/01 19:33:29 by stanizak          #+#    #+#             */
+/*   Updated: 2026/03/01 19:33:31 by stanizak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXER_H
-# define LEXER_H
+#ifndef LEXER1_H
+# define LEXER1_H
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -21,24 +21,24 @@
 
 typedef enum e_token_type
 {
-	TOK_WORD,
-	TOK_PIPE,
-	TOK_REDIRECT_IN,
-	TOK_REDIRECT_OUT,
-	TOK_REDIRECT_APPEND,
-	TOK_HEREDOC
-}	t_tok_type;
+	T_WORD,
+	T_PIPE,
+	T_REDIRECT_IN,
+	T_REDIRECT_OUT,
+	T_REDIRECT_APPEND,
+	T_HEREDOC
+}	t_token_type;
 
 typedef struct s_token
 {
-	t_tok_type		type;
+	t_token_type	type;
 	char			*value;
 	struct s_token	*next;
 }	t_token;
 
-t_token	*new_tok(t_tok_type type, char *value);
-int		push_tok(t_token **lst, t_token *tok);
-int		lex_word_end(const char *line, int *i);
-int		lex_line(const char *line, t_token **out);
+t_token	*new_tok(t_token_type type, char *value);
+int		push_tok(t_token **list, t_token *token);
+int		lex_word_end(char const *line, int *i);
+int		lex_line(char const *line, t_token **out);
 
 #endif
