@@ -39,6 +39,7 @@ static void	restore_terminal(t_shell *sh)
 
 static int	init_shell(t_shell *sh, char **envp)
 {
+	rl_catch_signals = 0;
 	sh->exit_code = 0;
 	sh->interactive = isatty(STDIN_FILENO);
 	sh->term_saved = false;

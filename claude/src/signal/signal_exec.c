@@ -12,10 +12,15 @@
 
 #include "../core/ms.h"
 
+static void	sig_handler_exec(int sig)
+{
+	g_sig = sig;
+}
+
 void	sig_set_exec_parent(void)
 {
 	signal(SIGQUIT, SIG_IGN);
-	signal(SIGINT, SIG_IGN);
+	signal(SIGINT, sig_handler_exec);
 }
 
 void	sig_set_exec_child(void)

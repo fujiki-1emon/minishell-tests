@@ -15,10 +15,10 @@
 static void	sig_handler_interactive(int sig)
 {
 	g_sig = sig;
+	write(STDOUT_FILENO, "^C\n", 3);
 	rl_on_new_line();
-	write(STDOUT_FILENO, "\n", 1);
 	rl_replace_line("", 0);
-	rl_done = 1;
+	rl_redisplay();
 }
 
 static void	sig_handler_record(int sig)

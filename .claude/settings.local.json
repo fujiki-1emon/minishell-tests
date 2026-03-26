@@ -31,7 +31,9 @@
       "Bash(git checkout:*)",
       "Bash(/Users/0/minishell/claude/minishell:*)",
       "Bash(wc:*)",
-      "Bash(./parser:*)"
+      "Bash(./parser:*)",
+      "Bash(norminette claude:*)",
+      "Bash(valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --error-exitcode=1 ./minishell)"
     ]
   }
 }

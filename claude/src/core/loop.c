@@ -37,16 +37,6 @@ static int	handle_line(t_shell *sh, char *line)
 	return (sh->exit_code);
 }
 
-static int	flush_sigint(t_shell *sh, char *line)
-{
-	sh->exit_code = 130;
-	g_sig = 0;
-	ms_term_disable_echoctl(sh);
-	if (!line)
-		return (1);
-	return (0);
-}
-
 static char	*read_prompt(t_shell *sh)
 {
 	char	*prompt;
@@ -73,14 +63,14 @@ void	ms_loop(t_shell *sh)
 {
 	char	*line;
 
-	sig_set_interactive();
 	while (1)
 	{
+		sig_set_interactive();
 		line = read_prompt(sh);
 		if (g_sig == SIGINT)
 		{
-			if (flush_sigint(sh, line))
-				continue ;
+			sh->exit_code = 130;
+			g_sig = 0;
 		}
 		if (!line)
 			break ;

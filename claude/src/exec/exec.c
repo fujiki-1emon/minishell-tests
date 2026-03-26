@@ -75,9 +75,20 @@ static int	exec_single_parent(t_shell *sh, t_cmd *cmd)
 
 int	exec_pipeline(t_shell *sh, t_pipeline *pl)
 {
+	int	ret;
+
+	sig_set_exec_parent();
 	if (pl->count == 1 && is_parent_builtin(&pl->cmds[0]))
-		return (exec_single_parent(sh, &pl->cmds[0]));
-	if (pl->count == 1 && (!pl->cmds[0].argv || !pl->cmds[0].argv[0]))
-		return (apply_redirects(sh, pl->cmds[0].redirects));
-	return (exec_forked_pipeline(sh, pl));
+		ret = exec_single_parent(sh, &pl->cmds[0]);
+	else if (pl->count == 1 && (!pl->cmds[0].argv || !pl->cmds[0].argv[0]))
+		ret = apply_redirects(sh, pl->cmds[0].redirects);
+	else
+		ret = exec_forked_pipeline(sh, pl);
+	if (g_sig == SIGINT)
+	{
+		write(STDERR_FILENO, "\n", 1);
+		ret = 130;
+	}
+	sig_set_interactive();
+	return (ret);
 }
